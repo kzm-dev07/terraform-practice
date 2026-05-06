@@ -1,11 +1,11 @@
 # Terraformのバージョンとプロバイダの指定
 # プロバイダ：AWS、GCPなどのクラウドサービスと通信するためのプラグイン
 terraform {
-  required_version = ">= 1.5.0" # Terraform本体のバージョン指定
+  required_version = "~> 1.5.0" # Terraform本体のバージョン指定
   required_providers {
     aws = {
       source  = "hashicorp/aws" # プロバイダの提供元
-      version = "~> 5.0"        # プロバイダのバージョン（5.x系を使用）
+      version = "~> 6.44.0"     # プロバイダのバージョン（6.x系を使用）
     }
   }
 }
