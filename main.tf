@@ -8,23 +8,18 @@ terraform {
       version = "~> 6.44.0"     # プロバイダのバージョン（6.x系を使用）
     }
   }
+  # Terraformの状態管理をS3バケットで行う設定 ※事前にS3バケットを作成しておく必要あり
+  backend "s3" {
+    bucket  = "kzm-terraform-practice"
+    region  = "ap-northeast-1"
+    key     = "terraform.tfstate" # 状態ファイルの保存場所（S3バケット内のパス）
+    encrypt = true
+  }
 }
 
 # AWSプロバイダの設定
 provider "aws" {
   region = var.aws_region # variables.tfで定義した変数を参照
-}
-
-# Terraformの状態管理用S3バケットの作成
-resource "aws_s3_bucket" "tfstate" {
-  bucket = "kzm-terraform-practice-tfstate"
-}
-
-resource "aws_s3_bucket_versioning" "tfstate" {
-  bucket = aws_s3_bucket.tfstate.id
-  versioning_configuration {
-    status = "Enabled"
-  }
 }
 
 # VPC（Virtual Private Cloud）
