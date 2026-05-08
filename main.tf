@@ -17,7 +17,7 @@ provider "aws" {
 
 # Terraformの状態管理用S3バケットの作成
 resource "aws_s3_bucket" "tfstate" {
-  bucket = "terraform-practice-tfstate"
+  bucket = "kzm-terraform-practice-tfstate"
 }
 
 resource "aws_s3_bucket_versioning" "tfstate" {
