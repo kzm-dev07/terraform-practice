@@ -15,6 +15,18 @@ provider "aws" {
   region = var.aws_region # variables.tfで定義した変数を参照
 }
 
+# Terraformの状態管理用S3バケットの作成
+resource "aws_s3_bucket" "tfstate" {
+  bucket = "terraform-practice-tfstate"
+}
+
+resource "aws_s3_bucket_versioning" "tfstate" {
+  bucket = aws_s3_bucket.tfstate.id
+  versioning_configuration {
+    status = "Enabled"
+  }
+}
+
 # VPC（Virtual Private Cloud）
 # AWSアカウント内の仮想ネットワーク空間
 resource "aws_vpc" "main" {
