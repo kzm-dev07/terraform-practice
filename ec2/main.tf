@@ -10,7 +10,7 @@ terraform {
   }
   # Terraformの状態管理をS3バケットで行う設定 ※事前にS3バケットを作成しておく必要あり
   backend "s3" {
-    bucket  = "kzm-terraform-practice"
+    bucket  = "terraform-practice-ec2"
     region  = "ap-northeast-1"
     key     = "terraform.tfstate" # 状態ファイルの保存場所（S3バケット内のパス）
     encrypt = true
